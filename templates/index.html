@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard">
+    <!-- Header with controls -->
+    <div class="dashboard-title">
+        <center><h2>Overview Dashboard</h2></center>
+
+    </div>
+
+     <!-- Key Metrics Cards -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <h3>Average Visits</h3>
+            <div class="metric-value">{{ stats_data.avg_visits }}</div>
+            <p class="metric-description">Average healthcare visits per patient</p>
+        </div>
+        <div class="metric-card">
+            <h3>Median Income</h3>
+            <div class="metric-value">{{ stats_data.median_income }}</div>
+            <p class="metric-description">Median household income</p>
+        </div>
+        <div class="metric-card">
+            <h3>Average Age</h3>
+            <div class="metric-value">{{ stats_data.avg_age }}</div>
+            <p class="metric-description">Mean age of patient population</p>
+        </div>
+        <div class="metric-card">
+            <h3>Diabetes Rate</h3>
+            <div class="metric-value">{{ stats_data.diabetes_rate }}</div>
+            <p class="metric-description">Prevalence of diabetes in population</p>
+        </div>
+        <div class="metric-card">
+            <h3>Total Population</h3>
+            <div class="metric-value">{{ stats_data.total_population }}</div>
+            <p class="metric-description">Total population served</p>
+        </div>
+    </div>
+    <!--Utilization Analysis Section-->
+    <h2>Healthcare Utilization Analysis</h2>
+    <!-- Charts -->
+    <div id="utilization-charts">
+        {{ utilization_charts | safe }}
+    </div>
+    <div class="insights-box">
+       <!--- <h3>Key Findings</h3>--->
+        <ul>
+            <li>Almost equal distribution between regular and large facility visits,
+                indicating that both regular and large facilities are accesible to patients
+            </li>
+            <li>Most patients receive 8-10 visits anually, suggesting consistent follow-up care</li>
+        </ul>
+    </div>
+</div>
+    <!-- Geographic Distribution Section-->
+     <div class="analysis-section">
+        <h2>Geographic Healthcare Access</h2>
+    <div class="map-container">
+        {{ map_html | safe }}
+    </div>
+    <div class="insights-box">
+        <h3>Spatial Analysis</h3>
+        <ul>
+        <li>Areas with higher diabetes rates show significantly higher visit frequencies, suggesting intensive disease management</li>
+        <li>Census blocks with darker shading indicate healthcare hotspots, where both visit counts and diabetes prevalence are elevated</li>
+        <li>Eastern regions of Laredo show concentrated healthcare utilization, correlating with higher diabetes rates and patient counts</li>
+        <li>Patient distribution varies by area, with some census blocks serving 60+ patients, indicating better access to community health centers or clinics</li>
+        </ul>
+    </div>
+</div>
+
+<!--
+<div class="dashboard">
+    <div class="stats-container">
+    <div class="stats-table">
+        <h2 class="stats-header">Key Statistics</h2>
+        <table class="stats-table">
+            <tr>
+                <td>Average Visist Per Patient:</td>
+                <td>{{ stats_data['avg_visits'] }}</td>
+            </tr>
+            <tr>
+                <td>Median Income:</td>
+                <td>{{ stats_data['median_income'] }}</td>
+            </tr>
+            <tr>
+                <td>Average Age:</td>
+                <td>{{ stats_data['avg_age'] }}</td>
+            </tr>
+            <tr>
+                <td>Average Diabetes Rate:</td>
+                <td>{{ stats_data['diabetes_rate'] }}</td>
+            </tr>
+            <tr>
+                <td>Total Population Covered:</td>
+                <td>{{ stats_data['total_population'] }}</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    {% if map_html %}
+    <div class="map-container">
+        {% include 'map.html' %}
+        {{ map_html | safe }}
+    </div> 
+    {% endif %}
+    Charts
+    <div class="chart">
+        <!--BAr chart
+        {{ utilization_charts | safe }}
+    </div>
+</div>--->
+{% endblock %}

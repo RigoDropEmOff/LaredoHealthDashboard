@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-title">
+        <h2>Demographics Analysis</h2>
+    </div>
+    
+    <div class="chart-section">
+        <h3> Healthcare Visits by Age Group</h3>
+            <div class="chart-container">
+            {{ age_barchart | safe}}
+        </div>
+        <div class="insights-box">
+            <ul>
+                <li>Dramatic peak in 0-10 age group with almost 200k visits, suggesting intensive pediatric care focus</li>
+                <li>A noticeable decline in healthcare visits after the age of 20 suggests potential gaps in preventive care 
+                    utilization among adults. This may highlight the need for increased awareness and accessibility to routine 
+                    health services for individuals in older age groups</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3> Healthcare Utilization by Age and Income</h3>
+            <div class="chart-container">
+            {{ age_scatter | safe}}
+        </div>
+        <div class="insights-box">
+            <ul>
+                <li>The chart shows that the majority of healthcare visits come from younger age groups.
+                    This suggests that younger individuals are utilizing healthcare services more frequently, possibly due to factors such as preventive care, sports injuries, or early-onset health conditions.</li>
+                <li>The color gradient representing income levels suggests that younger individuals with lower incomes are contributing significantly to the higher number of healthcare visits. 
+                    This trend may indicate a greater reliance on public healthcare services among this demographic, potentially due to financial constraints. </li>
+                    <li>The decline in visits among older age groups could indicate barriers such as cost, lack of awareness, or fewer preventive care initiatives targeting older populations.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3> Healthcare Usage by Education Level</h3>
+            <div class="chart-container">
+            {{ education_html| safe}}
+        </div>
+        <div class="insights-box">
+            <ul>
+                <li>Consistent healthcare utilization (~8-10 visits) across education levels</li>
+                <li>Slight increase in visits for higher education levels,suggests that higher education levels may correlate with higher income,
+                 which in turn could explain the increased healthcare utilization</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3> Family Structure Impact on Healthcare Use</h3>
+            <div class="chart-container">
+            {{ fam_html | safe}}
+        </div>
+        <div class="insights-box">
+            <ul>
+                <li>Larger families (4+ members) show higher total visits. This could be due to the increased healthcare needs of larger households, such as pediatric care for children</li>
+                <li>A smaller family size correlates with a higher income level, however family size correlates with visit patterns regardless of income level</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+    
+
+
+
+{% endblock %}

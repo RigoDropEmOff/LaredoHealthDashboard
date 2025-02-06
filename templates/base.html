@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <center><title>Laredo Health Dashboard</title></center>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add custom CSS -->
+    <style>
+        :root {
+            --primary-color: #0092ca;
+            --secondary-color: #d3d6db;
+            --background-color: #eeeeee;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+        .header-container h2{
+            text-align: center;
+        }
+        .dashboard-title{
+            width: 100%;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .dashboard-title h2{
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background: white;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-container {
+            background-color: var(--secondary-color);
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .nav-container a {
+            color: black;
+            font-weight: bold;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .nav-container a:hover {
+            background-color: var(--primary-color);
+            transition: background-color 0.3s ease;
+        }
+        h1, h2{
+            text-align: center;
+        }
+        .dashboard{
+            padding: 20px;
+            max-width: 90%;
+            justify-content: center;
+            }
+        .overview-header {
+            margin-bottom: 2rem;
+            text-align: center;
+            }
+        .dashboard-description{
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+            }
+
+        .metrics-grid {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1400px;
+            width: 100%;
+            margin: 2rem auto;
+            gap: 20px;
+        }
+
+        .metric-card {
+            flex: 1;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .metric-card h3{
+            text-align: center;
+            color: black;
+        }
+        .metric-value{
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+        }
+        .metric-description{
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        .analysis-section{
+            background: var(--background-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .insights-box{
+            background: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        .insights-box ul{
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .insights-box li{
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .insights-box li:before{
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+        .chart-section{
+            margin: 2rem auto;
+            max-width: 1200px;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .chart-container{
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin: 1rem;
+        }
+        h2, h3{
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Laredo Health Department Analytics</h1>
+    <nav class="nav-container">
+        <a href="{{url_for ('index') }}">Home</a>
+        <a href="{{url_for('demographics')}}"> View Demographics</a>
+        <a href="{{url_for('socioeconomic')}}"> View Socioeconomic</a>
+        <a href="{{url_for('health_outcomes')}}"> View Health Outcomes</a>
+    </nav>
+<!-- Add to your base.html before </body> -->
+
+
+
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-title">
+        <h3>Health Outcomes and Socioeconomic Anlysis</h3>
+    </div>
+
+
+    <div class="chart-section">
+        <h3> Diabetes Prevalence Analysis</h3>
+        <div class="chart-container">
+            {{ diabetes_chart | safe}}
+        </div>
+        <div class="chart-container">
+            {{diabetes_chart_age| safe}}
+        </div>
+            <div class="insights-box">
+                <ul>
+                    <li>Highest diabetes prevalence (12-15%) clusters in lower-middle income areas ($20k-$40k), with these areas also showing higher visit frequency (8-10 visits per patient)</li>
+                    <li>Consistent decrease in prevalence as income increases</li>
+                    <li>Notable peak in diabetes prevalence (~14%) around age 10-15, suggesting potential childhood diabetes hotspot</li>
+                    <li>Consistent upward trend in diabetes rates with age</li>
+                    <li>Healthcare utilization is consistently higher in areas with elevated diabetes rates, suggesting active disease management</li>
+        
+                </ul>
+            </div>
+    </div>
+
+    <div class="chart-section">
+        <h3> Correlation Analysis of Health Indicators</h3>
+        <div class="chart-container">
+            {{ corr_html| safe}}
+        </div>
+            <div class="insights-box">
+                <ul>
+                    <li>Strongest negative correlation (-0.38) between median income and visits per patient, supporting earlier observations of higher healthcare utilization in lower-income areas</li>
+                    <li>Notable positive correlation (0.49) between average age and diabetes rate, confirming age as a significant factor in diabetes prevalence</li>
+                    <li>Moderate positive correlation (0.27) between income and education level suggests higher education typically leads to higher income</li>
+                    <li>Negative correlation (-0.20) between income and diabetes rate indicates lower income areas face higher diabetes risk</li>
+                    <li>Weak correlation (0.19) between visits per patient and diabetes rate suggests consistent healthcare access regardless of condition</li>
+                </ul>
+            </div>
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock %}

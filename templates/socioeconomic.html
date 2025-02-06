@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard">
+    <div class="dashboard-title">
+        <h2>Socioeconomic Anlysis</h2>
+    </div>
+  
+    <div class="chart-section">
+            <h3> Healthcare Access Patterns Across Income Level</h3>
+            <div class="chart-container">
+                {{ income_figs | safe}}
+            </div>
+            <div class="chart-container">
+                {{income_visits_charts| safe}}
+            </div>
+        <div class="insights-box">
+            <ul>
+                <li>Medium income areas show highest patient concentration (~300 patients) compared to very high income areas (~200 patients)</li>
+                <li>Healthcare usage intensity remains relatively stable (8-9 visits per patient) across income levels, with slight decrease in very high income groups</li>
+                <li>Notable outliers around $40k median income show extremely high utilization (10-12k visits), suggesting possible healthcare facility locations or community health centers in these areas</li>
+                <li>Overall negative trend line indicates decreasing visits as income rises, but relationship is weak</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <h3> Healthcare Usage by Family Size and Income</h3>
+        <div class="chart-container">
+            {{ up_html | safe}}
+        </div>
+    <div class="insights-box">
+        <ul>
+            <li>Very large families show highest total visit counts (3000-4000) particularly in medium income category</li>
+            <li>Medium income groups maintain steady utilization across all family sizes, suggesting balanced healthcare access</li>
+            <li>Larger families with higher income tendto visit the doctor less frequently, which may reflect greater access to preventive care and healthier lifestyles.
+                This could also indicate that higher-income households have better resources to manage health proactively, reducing the need for repeated healthcare utilization.
+            </li>
+        </ul>
+    </div>
+
+    <div class="chart-section">
+        <h3> Healthcare Utilization vs Employment Rate</h3>
+        <div class="chart-container">
+            {{employment_bubble_chart | safe}}
+        </div>
+    <div class="insights-box">
+        <ul>
+            <li>Slight negative correlation between employment rate and healthcare visits (9-10 visits at 25% employment vs 7-8 visits at 55%)</li>
+            <li>Higher income areas tend to have higher employment rates but fewer visits per patient</li>
+            <li>Areas with 30-40% employment show most varied visit patterns, suggesting other factors influence healthcare utilization</li>
+        </ul>
+    </div>
+
+
+
+</div>
+
+{% endblock %}
